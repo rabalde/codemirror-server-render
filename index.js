@@ -70,7 +70,7 @@ export function renderString(code, highlightStyle=defaultHighlightStyle, theme, 
       }
 
       // get token value from the current cursorPos to end of token (BUT NOT to extend the end of the current line)
-      let codeVal = text.sliceString(curs.from, Math.min(curs.to, line.to));
+      let codeVal = text.sliceString(Math.max(curs.from, line.from), Math.min(curs.to, line.to));
       
       str += `<${curs.value.tagName} class="${curs.value.class}">${codeVal}</${curs.value.tagName}>`;
       pos = curs.to;
